@@ -13,7 +13,7 @@ class NoteListListTile extends StatelessWidget {
       child: ListTile(
         title: Text(title,style: AppStyles.font16blackTextW500,),
         subtitle: Text(subtitle,style: AppStyles.font14lightTextW400,),
-        trailing: IconButton(icon: Icon(Icons.restore_from_trash_outlined,size: 24,), onPressed:  onDelete,),
+        trailing: IconButton(icon: Icon(Icons.delete,size: 24,), onPressed:  onDelete,),
         onTap: onTap,
       ),
     );

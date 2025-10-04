@@ -4,6 +4,7 @@ import 'package:note_app/helpers/extensions.dart';
 import 'package:note_app/views/widgets/common_widgets/custom_app_bar.dart';
 import 'package:note_app/views/widgets/note_details_widgets/note_details_body.dart';
 import '../services/firestore_service.dart';
+
 class NoteDetailsView extends StatelessWidget {
   final String noteId;
 
@@ -19,11 +20,15 @@ class NoteDetailsView extends StatelessWidget {
         onEdit: () {
           _showEditDialog(context, firestoreService);
         },
+        context: context,
       ),
       body: StreamBuilder<DocumentSnapshot>(
-        stream: firestoreService.notesCollection.doc(noteId).snapshots(),
+        stream: firestoreService
+            .getNoteById(noteId), // ✅ Use new helper function instead
         builder: (context, snapshot) {
-          if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
           final data = snapshot.data!.data() as Map<String, dynamic>;
           final noteTitle = data['title'] ?? '';
@@ -67,7 +72,8 @@ class NoteDetailsView extends StatelessWidget {
     );
   }
 
-  void _editField(BuildContext context, String field, FirestoreService firestoreService) {
+  void _editField(
+      BuildContext context, String field, FirestoreService firestoreService) {
     final controller = TextEditingController();
 
     showDialog(
@@ -79,7 +85,7 @@ class NoteDetailsView extends StatelessWidget {
             controller: controller,
             maxLines: field == "content" ? 5 : 1,
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
+              border: const OutlineInputBorder(),
               hintText: "Enter new ${field == 'title' ? 'title' : 'content'}",
             ),
           ),

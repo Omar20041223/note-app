@@ -7,7 +7,7 @@ class NoteListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: 'Notes List'),
+      appBar: customAppBar(title: 'Notes List', context: context),
       body: NoteListBody(),
     );
   }

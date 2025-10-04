@@ -7,7 +7,7 @@ class CreateNoteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: 'Create Note'),
+      appBar: customAppBar(title: 'Create Note', context: context),
       body: const CreateNoteBody(),
     );
   }
