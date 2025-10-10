@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:note_app/services/notification_service.dart';
 import 'package:note_app/services/remote_config_service.dart';
 import 'firebase_options.dart';
 import 'helpers/app_router.dart';
@@ -11,8 +12,7 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await RemoteConfigService.instance.initialize();
-
-
+  await NotificationService.instance.initialize();
 
   runApp(const MyApp());
 }
