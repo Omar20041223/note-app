@@ -39,6 +39,10 @@ dependencies:
   cloud_firestore: ^6.0.2
   firebase_auth: ^6.1.0
   google_sign_in: ^6.2.1
+  firebase_remote_config: ^6.0.2
+  firebase_analytics: ^12.0.2
+  url_launcher: ^6.3.2
+  package_info_plus: ^9.0.0
 
 dev_dependencies:
   flutter_test:

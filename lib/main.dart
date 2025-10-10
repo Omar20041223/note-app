@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:note_app/services/remote_config_service.dart';
 import 'firebase_options.dart';
 import 'helpers/app_router.dart';
 
@@ -9,6 +10,9 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await RemoteConfigService.instance.initialize();
+
+
 
   runApp(const MyApp());
 }
